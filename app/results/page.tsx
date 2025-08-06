@@ -43,7 +43,7 @@ export default function Page() {
         className='absolute top-0 right-0 pointer-events-none'
       >
         <Image
-          src='/images/main/Quiz.png'
+          src='/images/main/Quiz.webp'
           alt='bg'
           width={1080}
           height={1171}
@@ -56,7 +56,7 @@ export default function Page() {
         className='absolute top-[920px] right-10 pointer-events-none'
       >
         <Image
-          src='/images/main/Robocat.png'
+          src='/images/main/Robocat.webp'
           alt='bg'
           width={581}
           height={820}

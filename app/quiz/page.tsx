@@ -102,7 +102,7 @@ export default function Page() {
       <div
         className='relative flex flex-col px-24 py-16 min-h-screen'
         style={{
-          backgroundImage: "url('/images/main/Quiz.png')",
+          backgroundImage: "url('/images/main/Quiz.webp')",
           backgroundSize: 'cover', // or 'contain' depending on your need
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',

@@ -98,7 +98,7 @@ export default function Home() {
         transition={{ duration: 0.5 }}
         className='absolute top-0 right-0 pointer-events-none'
       >
-        <Image src='/images/main/Main.png' alt='bg' width={1080} height={1495} />
+        <Image src='/images/main/Main.webp' alt='bg' width={1080} height={1495} />
       </motion.div>
             <motion.div
               initial={{ opacity: 0, x: '100%', y: '-300px' }}
@@ -107,7 +107,7 @@ export default function Home() {
               className='absolute top-[920px] right-10 pointer-events-none'
             >
               <Image
-                src='/images/main/Robocat.png'
+                src='/images/main/Robocat.webp'
                 alt='bg'
                 width={581}
                 height={820}
