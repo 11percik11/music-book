@@ -5,36 +5,37 @@ import { Button } from '@/components/ui'
 import { FooterLogo } from '@/components/shared/footer-logo'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Suspense, useEffect, useState } from 'react'
+import { brotliDecompress } from 'zlib'
 
 export default function Page() {
   return (
     <div className='flex flex-col min-h-screen'>
       <motion.div
-        initial={{ opacity: 1, x: '-100%' }}
-        animate={{ opacity: 1, x: '0' }}
-        transition={{ duration: 0.5, delay: 0 }}
-        className='absolute top-0 left-0 z-[2]'
-      >
-        <Image
-          src='/images/main/logo-left.svg'
-          alt='logo'
-          width={319}
-          height={170}
-        />
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, x: '-100%' }}
-        animate={{ opacity: 1, x: '0' }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className='absolute top-0 left-[190px] z-[1]'
-      >
-        <Image
-          src='/images/main/logo-right.svg'
-          alt='logo'
-          width={486}
-          height={170}
-        />
-      </motion.div>
+              initial={{ opacity: 1, x: '-100%' }}
+              animate={{ opacity: 1, x: '0' }}
+              transition={{ duration: 0.5, delay: 0 }}
+              className='absolute top-0 left-0 z-[2]'
+            >
+              <Image
+                src='/images/main/logo-left.svg'
+                alt='logo'
+                width={411}
+                height={257}
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: '-100%' }}
+              animate={{ opacity: 1, x: '0' }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className='absolute top-0 left-[270px] z-[1]'
+            >
+              <Image
+                src='/images/main/logo-right.svg'
+                alt='logo'
+                width={618}
+                height={257}
+              />
+            </motion.div>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -42,7 +43,7 @@ export default function Page() {
         className='absolute top-0 right-0 pointer-events-none'
       >
         <Image
-          src='/images/results/bg.png'
+          src='/images/main/Quiz.png'
           alt='bg'
           width={1080}
           height={1171}
@@ -52,16 +53,16 @@ export default function Page() {
         initial={{ opacity: 0, x: '100%', y: '-300px' }}
         animate={{ opacity: 1, x: '0', y: '0' }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className='absolute top-[690px] right-0 pointer-events-none'
+        className='absolute top-[920px] right-10 pointer-events-none'
       >
         <Image
-          src='/images/results/robot.png'
+          src='/images/main/Robocat.png'
           alt='bg'
-          width={667}
-          height={1060}
+          width={581}
+          height={820}
         />
       </motion.div>
-      <FooterLogo />
+      <FooterLogo width={1082} height={168} />
       <Suspense>
         <Results />
       </Suspense>
@@ -149,20 +150,20 @@ function Results() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <div className='px-[90px] pt-[1024px] flex flex-col gap-10'>
+          <div className='px-[90px] pt-[337px] flex flex-col gap-10' style={{position: "absolute"}}>
             <div className='flex items-center gap-1 text-[72px] font-moscow'>
               <div className='flex gap-3 items-center'>
-                <div className='flex items-center justify-center text-center w-[77px] h-[125px] bg-gradientTo/15'>
-                  <span className='title'>{resultsParams}</span>
+                <div className='flex items-center justify-center text-center w-[77px] h-[125px] bg-gradientTo/15' style={{background: "#FFFFFF33"}}>
+                  <span className='title2'>{resultsParams}</span>
                 </div>
-                <span className='title'>/</span>
-                <div className='flex items-center justify-center text-center w-[77px] h-[125px]  bg-gradientTo/15'>
-                  <span className='title'>5</span>
+                <span className='title2'>/</span>
+                <div className='flex items-center justify-center text-center w-[77px] h-[125px]  bg-gradientTo/15' style={{background: "#FFFFFF33"}}>
+                  <span className='title2'>5</span>
                 </div>
               </div>
             </div>
             <h1
-              className='title font-moscow text-[68px] leading-tight'
+              className='title2 font-moscow text-[100px] leading-tight'
               dangerouslySetInnerHTML={{
                 __html: results[+resultsParams].title,
               }}
@@ -173,10 +174,11 @@ function Results() {
                 dangerouslySetInnerHTML={{
                   __html: results[+resultsParams].subtitle!,
                 }}
+                style={{color: "#FFFFFF"}}
               ></div>
             )}
 
-            <Button onClick={onClickMain} className='w-[290px]'>
+            <Button onClick={onClickMain} className='w-[290px]' style={{borderRadius: "24px"}}>
               На главную
             </Button>
           </div>

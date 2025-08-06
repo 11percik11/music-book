@@ -47,7 +47,7 @@ export default function Page() {
     setCurrentQuestion((prev) => prev + 1)
     setSelectedAnswer(() => null)
     setIsShowModal(() => false)
-    setTimer(() => 20)
+    setTimer(() => 20) ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     setTimeout(() => {
       setIsCorrect(false)
     }, 500)
@@ -99,35 +99,55 @@ export default function Page() {
 
   return (
     <>
-      <div className='relative flex flex-col px-24 py-16 min-h-screen'>
+      <div
+        className='relative flex flex-col px-24 py-16 min-h-screen'
+        style={{
+          backgroundImage: "url('/images/main/Quiz.png')",
+          backgroundSize: 'cover', // or 'contain' depending on your need
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+        }}
+      >
         <audio ref={audioRef} className='hidden'></audio>
         {/*header*/}
         <div className='flex gap-[50px] items-center'>
           <motion.div
-            initial={{ opacity: 1, y: '-200%' }}
-            animate={{ opacity: 1, y: '0' }}
+            initial={{ opacity: 1, x: '-100%' }}
+            animate={{ opacity: 1, x: '0' }}
             transition={{ duration: 0.5, delay: 0 }}
+            className='absolute top-0 left-0 z-[2]'
           >
             <Image
-              src='/images/quiz/logo-left.svg'
-              width={160}
-              height={85}
+              src='/images/main/logo-left.svg'
               alt='logo'
+              width={411}
+              height={257}
             />
           </motion.div>
           <motion.div
-            initial={{ opacity: 0, y: '-200%' }}
-            animate={{ opacity: 1, y: '0' }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            initial={{ opacity: 0, x: '-100%' }}
+            animate={{ opacity: 1, x: '0' }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className='absolute top-0 left-[270px] z-[1]'
           >
             <Image
-              src='/images/quiz/logo-right.svg'
-              width={260}
-              height={85}
+              src='/images/main/logo-right.svg'
               alt='logo'
+              width={618}
+              height={257}
             />
           </motion.div>
           {/*timer*/}
+        </div>
+        <div className='mt-[263px] flex items-center'>
+          <motion.div
+            initial={{ opacity: 0, y: '-200%' }}
+            animate={{ opacity: 1, y: '0' }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className='font-moscow text-white text-[72px] text-center'
+          >
+            {currentQuestion + 1}/5
+          </motion.div>
           <motion.div
             initial={{ opacity: 0, y: '-200%' }}
             animate={{ opacity: 1, y: '0' }}
@@ -136,24 +156,36 @@ export default function Page() {
           >
             <div className='flex items-center gap-1 text-[48px] font-moscow'>
               <div className='flex gap-1'>
-                <div className='flex items-center justify-center text-center pl-2 pr-1 py-3 bg-gradientTo/15'>
-                  <span className='pl-1 title'>0</span>
+                <div
+                  className='flex items-center justify-center text-center pl-2 pr-1 py-3 bg-gradientTo/15'
+                  style={{ background: '#C177FF' }}
+                >
+                  <span className='pl-1 text-white'>0</span>
                 </div>
-                <div className='flex items-center justify-center text-center pl-2 pr-1 py-3 bg-gradientTo/15'>
-                  <span className='pl-1 title'>0</span>
+                <div
+                  className='flex items-center justify-center text-center pl-2 pr-1 py-3 bg-gradientTo/15'
+                  style={{ background: '#C177FF' }}
+                >
+                  <span className='pl-1 text-white'>0</span>
                 </div>
               </div>
               <span className='flex items-center justify-center text-center'>
-                <span className='pl-1 title'>:</span>
+                <span className='pl-1 text-white'>:</span>
               </span>
               <div className='flex gap-1'>
-                <div className='flex items-center justify-center text-center pl-2 pr-1 py-3 bg-gradientTo/15'>
-                  <span className='pl-1 title'>
+                <div
+                  className='flex items-center justify-center text-center pl-2 pr-1 py-3 bg-gradientTo/15'
+                  style={{ background: '#C177FF' }}
+                >
+                  <span className='pl-1 text-white'>
                     {timer.toString().length > 1 ? timer.toString()[0] : '0'}
                   </span>
                 </div>
-                <div className='flex items-center justify-center text-center pl-2 pr-1 py-3 bg-gradientTo/15'>
-                  <span className='pl-1 title'>
+                <div
+                  className='flex items-center justify-center text-center pl-2 pr-1 py-3 bg-gradientTo/15'
+                  style={{ background: '#C177FF' }}
+                >
+                  <span className='pl-1 text-white'>
                     {timer.toString().length > 1
                       ? timer.toString()[1]
                       : timer.toString()[0]}
@@ -163,20 +195,39 @@ export default function Page() {
             </div>
           </motion.div>
         </div>
+
         {/*quiz*/}
         {Boolean(questions.length) && (
-          <div className='mt-[160px] flex flex-col gap-[90px]'>
+          <div
+            className='mt-[15px] flex flex-col gap-[64px] '
+            style={{
+              background: '#FFFFFFB2',
+              padding: '64px',
+              borderRadius: '64px',
+            }}
+          >
             {/*quiz-header*/}
-            <div className='flex flex-col gap-10'>
-              <div className='font-bold text-black text-[32px] text-center'>
+            <div className='flex flex-col gap-4'>
+              {/* <div className='font-bold text-black text-[32px] text-center'>
                 {currentQuestion + 1}/5
-              </div>
+              </div> */}
               <div className='title text-center text-[72px] font-moscow'>
-                Прослушайте <br /> Звук
+                Прослушайте Звук
               </div>
-              <div className='text-center w-[705px] mx-auto text-2xl'>
+              <div
+                className='text-center w-[705px] mx-auto text-2xl'
+                style={{ color: '#010037' }}
+              >
                 Прослушайте звуковую дорожку и выберите один из предложенных
                 вариантов, соответствующий верному источнику звука
+              </div>
+              <div style={{ margin: 'auto' }}>
+                <Image
+                  src='/images/main/Play.svg'
+                  alt='logo'
+                  width={112}
+                  height={112}
+                />
               </div>
             </div>
             {/*  quiz-body*/}
@@ -188,10 +239,23 @@ export default function Page() {
                       onClick={() => onClickAnswer(answer)}
                       key={answer.id}
                       className={cn(
-                        'h-[124px] px-14 py-2 flex items-center border-2 text-2xl',
-                        selectedAnswer?.id === answer.id &&
-                          'bg-gradientTo/40 border-gradientTo/40',
+                        'h-[93px] px-14 py-2 flex items-center border-2 text-2xl',
                       )}
+                      style={{
+                        border: 'none',
+                        color:
+                          selectedAnswer?.id === answer.id
+                            ? '#FFFFFF'
+                            : '#010037',
+                        background:
+                          selectedAnswer?.id === answer.id
+                            ? '#9D28FF'
+                            : '#FFFFFF99',
+                        borderRadius: '24px',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        textAlign: 'center',
+                      }}
                     >
                       {answer.title}
                     </div>
@@ -206,18 +270,32 @@ export default function Page() {
                       onClick={() => onClickAnswer(answer)}
                       key={answer.id}
                       className={cn(
-                        'h-[327px] px-10 py-5 flex border-2 text-xl  flex-col gap-3',
+                        'px-10 py-5 flex border-2 text-xl  flex-col gap-3',
                         selectedAnswer?.id === answer.id &&
                           'bg-gradientTo/40 border-gradientTo/40',
                       )}
-                      style={{display: "flex", alignItems: "center", justifyContent: "center"}}
+                      style={{
+                        color:
+                          selectedAnswer?.id === answer.id
+                            ? '#FFFFFF'
+                            : '#010037',
+                        background:
+                          selectedAnswer?.id === answer.id
+                            ? '#9D28FF'
+                            : '#FFFFFF99',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        borderRadius: '24px',
+                        textAlign: 'center',
+                      }}
                     >
                       <Image
                         src={answer.img!}
                         alt='image'
-                        width={320}
-                        height={170}
-                        style={{maxHeight: '200px', borderRadius: '16px'}}
+                        width={332}
+                        height={158}
+                        style={{ maxHeight: '158px', borderRadius: '12px' }}
                       />
                       {answer.title}
                     </div>
@@ -228,12 +306,21 @@ export default function Page() {
 
             {/*  quiz-actions*/}
             <div className='flex gap-8'>
-              <Button onClick={onClickEnd} variant='outline'>
+              <Button
+                onClick={onClickEnd}
+                variant='outline'
+                style={{
+                  border: '#9D28FF solid 4px',
+                  borderRadius: '24px',
+                  color: '#9D28FF',
+                }}
+              >
                 Завершить
               </Button>
               <Button
                 onClick={onClickToAnswer}
                 disabled={!Boolean(selectedAnswer)}
+                style={{ borderRadius: '24px' }}
               >
                 Ответить
               </Button>
@@ -241,9 +328,9 @@ export default function Page() {
           </div>
         )}
 
-        <FooterLogo width={309} height={122} />
+        <FooterLogo width={1082} height={168} />
         <Dialog open={isShowModal}>
-          <DialogContent className='outline-none'>
+          <DialogContent className='outline-none' style={{borderRadius: '64px', width: '600px', height: "545px"}}>
             <DialogTitle className='hidden'>Следующий вопрос</DialogTitle>
             <DialogDescription className='hidden'></DialogDescription>
             {isCorrect ? (
@@ -255,7 +342,7 @@ export default function Page() {
                   height={100}
                 />
                 <div className='font-moscow text-[72px] title text-center'>
-                  Вы ответили <br /> верно
+                  верно
                 </div>
               </>
             ) : (
@@ -267,12 +354,12 @@ export default function Page() {
                   height={96}
                 />
                 <div className='font-moscow text-[72px] title text-center'>
-                  Вы ответили <br /> неверно
+                  неверно
                 </div>
               </>
             )}
 
-            <Button onClick={onClickNext}>далее</Button>
+            <Button onClick={onClickNext} style={{borderRadius: "24px", width: "205px", height: "77px"}}>далее</Button>
           </DialogContent>
         </Dialog>
       </div>

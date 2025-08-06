@@ -44,7 +44,14 @@
 }
 
 .title {
-  background: linear-gradient(89deg, #7541e0 0%, #02c8f0 100%);
+  background: linear-gradient(89deg, #010037 0%, #010037 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.title2 {
+  background: linear-gradient(90deg,rgba(126, 55, 222, 1) 0%, rgba(98, 89, 227, 1) 25%, rgba(66, 127, 232, 1) 50%, rgba(33, 164, 237, 1) 75%, rgba(0, 202, 241, 1) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

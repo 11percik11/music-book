@@ -75,21 +75,21 @@ export default function Home() {
         <Image
           src='/images/main/logo-left.svg'
           alt='logo'
-          width={319}
-          height={170}
+          width={411}
+          height={257}
         />
       </motion.div>
       <motion.div
         initial={{ opacity: 0, x: '-100%' }}
         animate={{ opacity: 1, x: '0' }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className='absolute top-0 left-[190px] z-[1]'
+        className='absolute top-0 left-[270px] z-[1]'
       >
         <Image
           src='/images/main/logo-right.svg'
           alt='logo'
-          width={486}
-          height={170}
+          width={618}
+          height={257}
         />
       </motion.div>
       <motion.div
@@ -98,16 +98,31 @@ export default function Home() {
         transition={{ duration: 0.5 }}
         className='absolute top-0 right-0 pointer-events-none'
       >
-        <Image src='/images/main/bg.png' alt='bg' width={1080} height={1495} />
+        <Image src='/images/main/Main.png' alt='bg' width={1080} height={1495} />
       </motion.div>
-      <FooterLogo />
+            <motion.div
+              initial={{ opacity: 0, x: '100%', y: '-300px' }}
+              animate={{ opacity: 1, x: '0', y: '0' }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className='absolute top-[920px] right-10 pointer-events-none'
+            >
+              <Image
+                src='/images/main/Robocat.png'
+                alt='bg'
+                width={581}
+                height={820}
+              />
+            </motion.div>
+      <FooterLogo width={1082} height={168} />
+      
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <div className='px-[90px] py-[150px]'>
-          <p className='text-black text-[32px] uppercase font-bold mb-6'>
+        
+        {/* <div className='px-[90px] py-[150px]'> */}
+          {/* <p className='text-black text-[32px] uppercase font-bold mb-6'>
             Аудиовикторина ctnrc
           </p>
           <h1 className='title font-moscow text-[110px] leading-tight'>
@@ -115,29 +130,30 @@ export default function Home() {
           </h1>
           <p className='w-[485px] text-2xl my-10'>
             Пройдите развлекательную финансовую аудиовикторину
-          </p>
-          <Button onClick={onOpenModal}>прослушать звук</Button>
-        </div>
+          </p> */}
+          <Button style={{position: "absolute", top: "931px", left:"100px", borderRadius: "24px", zIndex: "2"}} onClick={onOpenModal}>прослушать звук</Button>
+        {/* </div> */}
       </motion.div>
       <Dialog open={isShow} onOpenChange={(value) => setIsShow(() => value)}>
-        <DialogContent className='outline-none'>
+        <DialogContent className='outline-none' style={{borderRadius: "64px", width: "814px"}}>
           <DialogHeader>
-            <DialogTitle className='title font-moscow text-[72px]'>
+            <DialogTitle className='title font-moscow text-[72px]' style={{paddingLeft: "7px"}}>
               Инструкция
             </DialogTitle>
           </DialogHeader>
           <DialogDescription>
-            <span>
+            <span style={{textAlign: "center", display: "flex"}}>
               Вам будет предложено прослушать звуковую дорожку, после чего у вас
               будет 20 секунд, чтобы выбрать один правильный вариант ответа.
               <br />
               <br />
               Всего мы зададим вам 5 вопросов по 4 варианта ответов в каждом.
               <br />
+              <br/>
               Внимание и удачи в игре!
             </span>
           </DialogDescription>
-          <Button onClick={onStartTimer}>начать</Button>
+          <Button onClick={onStartTimer} style={{padding: "0", borderRadius: "24px", maxWidth: "221px", height: "77px"}}>начать</Button>
         </DialogContent>
       </Dialog>
       <Dialog open={isStart}>
